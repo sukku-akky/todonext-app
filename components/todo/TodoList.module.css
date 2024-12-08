@@ -1,0 +1,19 @@
+.todoList {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.ul {
+  list-style: none;
+  padding: 0;
+}
+
+.addTaskContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+

@@ -1,0 +1,76 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: orange;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+  }
+
+  .addTaskButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .addTaskButton:hover {
+    background-color: #218838;
+  }
+  
+  .inputField,
+  .textAreaField {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .inputField:focus,
+  .textAreaField:focus {
+    border-color: #0070f3;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .addButton {
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addButton:hover {
+    background-color: #005bb5;
+  }
+  
+  .cancelButton {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cancelButton:hover {
+    background-color: #bdbdbd;
+  }
+  
