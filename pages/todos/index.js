@@ -4,7 +4,7 @@ import { MongoClient } from "mongodb";
 import { useState } from "react";
 
 const Todos = (props) => {
-  const [todos, setTodos] = useState(props.todoTasks);
+  const [todos, setTodos] = useState(props.todoTasks || []);
   async function addTaskHandler(enteredDetails) {
     const response = await fetch("/api/todos", {
       method: "POST",
@@ -40,9 +40,33 @@ const Todos = (props) => {
       }))
     );
   }
+
+  const handleUpdateTaskStatus = async (id) => {
+    try {
+      // Directly send true as the updated status
+      const response = await fetch(`/api/todos?id=${id}`, {
+        method: "PUT",
+        body: JSON.stringify({ status: true }), // Directly sending true for the status
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update task status");
+      }
+
+      await fetchUpdatedTasks();
+    } catch (error) {
+      console.error("Error updating task status:", error);
+    }
+  };
   return (
     <>
-      <TodoList todos={todos.length > 0 ? todos : props.todoTasks} />
+      <TodoList
+        todos={todos.length > 0 ? todos : props.todoTasks}
+        onUpdateTaskStatus={handleUpdateTaskStatus}
+      />
       <TodoForm onAddTaskDetails={addTaskHandler} />
     </>
   );

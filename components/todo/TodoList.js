@@ -1,6 +1,6 @@
 import classes from "./TodoList.module.css";
 import TodoItem from "./TodoItem";
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos ,onUpdateTaskStatus}) => {
   const onDeleteTodo = (id) => {
     console.log(`Delete todo with id: ${id}`);
     // Add deletion logic here
@@ -31,6 +31,7 @@ const TodoList = ({ todos }) => {
             description={todo.description}
             onEdit={onEditTodo}
             onDelete={onDeleteTodo}
+            onUpdateTaskStatus={onUpdateTaskStatus}
           />
         ))}
       </ul>

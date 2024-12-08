@@ -1,26 +1,9 @@
 import React from "react";
 import classes from "./TodoItem.module.css";
-
-const TodoItem = ({ id, title, description, onDelete, onEdit }) => {
-  const checkHandler = async () => {
-    try {
-      const response = await fetch(`/api/todos?id=${id}`, {
-        method: "PUT",
-        body: JSON.stringify({ status: true }), // Update the status to true
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to update status");
-      }
-
-      const data = await response.json();
-      console.log(data.message); // Log success message or handle UI update
-    } catch (error) {
-      console.error("Error updating task status:", error);
-    }
+import fetchUpdatedTasks from "../../actions/getTasks";
+const TodoItem = ({ id, title, description, onDelete, onEdit ,onUpdateTaskStatus}) => {
+  const checkHandler =  () => {
+   onUpdateTaskStatus(id);
   };
   return (
     <li className={classes.todoItem}>
