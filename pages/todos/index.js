@@ -61,15 +61,40 @@ const Todos = (props) => {
       console.error("Error updating task status:", error);
     }
   };
-  return (
-    <>
-      <TodoList
-        todos={todos.length > 0 ? todos : props.todoTasks}
-        onUpdateTaskStatus={handleUpdateTaskStatus}
-      />
-      <TodoForm onAddTaskDetails={addTaskHandler} />
-    </>
-  );
+
+  const handleDeleteTask = async (id) => {
+    try {
+      // Directly send true as the updated status
+      const response = await fetch(`/api/todos?id=${id}`, {
+        method: "DELETE",
+        
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete task");
+      }
+
+      await fetchUpdatedTasks();
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
+  };
+
+
+return (
+  <>
+    
+    <TodoList
+      todos={todos.length > 0 ? todos : props.todoTasks}
+      onUpdateTaskStatus={handleUpdateTaskStatus}
+      onDeleteTodo={handleDeleteTask}
+    />
+    <TodoForm onAddTaskDetails={addTaskHandler} />
+  </>
+);
 };
 
 export default Todos;

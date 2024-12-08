@@ -5,6 +5,10 @@ const TodoItem = ({ id, title, description, onDelete, onEdit ,onUpdateTaskStatus
   const checkHandler =  () => {
    onUpdateTaskStatus(id);
   };
+  const handleDelete=()=>{
+    onDelete(id);
+
+  }
   return (
     <li className={classes.todoItem}>
       <div className={classes.content}>
@@ -19,7 +23,7 @@ const TodoItem = ({ id, title, description, onDelete, onEdit ,onUpdateTaskStatus
           <p className={classes.description}>{description}</p>
         </div>
       </div>
-      <button className={classes.deleteBtn} onClick={() => onDelete(id)}>
+      <button className={classes.deleteBtn} onClick={handleDelete}>
         🗑️
       </button>
       <button className={classes.editBtn} onClick={() => onEdit(id)}>
